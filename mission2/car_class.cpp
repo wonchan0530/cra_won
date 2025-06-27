@@ -4,6 +4,7 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <windows.h>
 
 #define CLEAR_SCREEN "\033[H\033[2J"
 
@@ -116,7 +117,7 @@ public:
             if (action == 1) runCar();
             else if (action == 2) testCar();
             else break; // 종료
-
+            Sleep(3000);
         }
     }
     bool inputCarType() {
@@ -138,7 +139,7 @@ public:
         case 3: car.carType = CarType::TRUCK; break;
         default: 
             printf("차량 타입은 %d ~ %d 범위만 선택 가능\n", CAR_TYPE_MIN, CAR_TYPE_MAX);
-    
+            Sleep(2000);
             return inputCarType();      
         }
         return true;
@@ -154,7 +155,7 @@ public:
         case 4: car.engine = Engine::FAULTY; break;
         default: 
             printf("엔진은 %d ~ %d 범위만 선택 가능\n", ENGINE_MIN, ENGINE_MAX);
-  
+            Sleep(2000);
             return inputEngine();
         }
         return true;
@@ -169,7 +170,7 @@ public:
         case 3: car.brake = Brake::BOSCH; break;
         default: 
             printf("제동장치는 %d ~ %d 범위만 선택 가능\n", BRAKE_MIN, BRAKE_MAX);
-
+            Sleep(2000);
             return inputBrake();
         }
         return true;
@@ -183,7 +184,7 @@ public:
         case 2: car.steering = Steering::MOBIS; break;
         default: 
             printf("조향장치는 %d ~ %d 범위만 선택 가능\n", STEERING_MIN, STEERING_MAX);
-
+            Sleep(2000);
             return inputSteering();
         }
         return true;
@@ -200,7 +201,7 @@ public:
         case 2: return n;
         default:
             printf("Run 또는 Test 중 하나를 선택 필요\n");
-
+            Sleep(2000);
             return selectAction();
         }
     }
