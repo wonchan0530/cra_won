@@ -14,20 +14,6 @@ const int BRAKE_MIN = 1, BRAKE_MAX = 3;
 const int STEERING_MIN = 1, STEERING_MAX = 2;
 const int RUN_TEST_MIN = 1, RUN_TEST_MAX = 2;
 
-void delay(int ms)
-{
-    volatile int sum = 0;
-    for (int i = 0; i < 1000; i++)
-    {
-        for (int j = 0; j < 1000; j++)
-        {
-            for (int t = 0; t < ms; t++)
-            {
-                sum++;
-            }
-        }
-    }
-}
 
 enum class CarType { NONE, SEDAN, SUV, TRUCK };
 enum class Engine { NONE, GM, TOYOTA, WIA, FAULTY };
@@ -130,7 +116,7 @@ public:
             if (action == 1) runCar();
             else if (action == 2) testCar();
             else break; // 종료
-            delay(7000);
+
         }
     }
     bool inputCarType() {
@@ -152,7 +138,7 @@ public:
         case 3: car.carType = CarType::TRUCK; break;
         default: 
             printf("차량 타입은 %d ~ %d 범위만 선택 가능\n", CAR_TYPE_MIN, CAR_TYPE_MAX);
-            delay(3000);
+    
             return inputCarType();      
         }
         return true;
@@ -168,7 +154,7 @@ public:
         case 4: car.engine = Engine::FAULTY; break;
         default: 
             printf("엔진은 %d ~ %d 범위만 선택 가능\n", ENGINE_MIN, ENGINE_MAX);
-            delay(3000); 
+  
             return inputEngine();
         }
         return true;
@@ -183,7 +169,7 @@ public:
         case 3: car.brake = Brake::BOSCH; break;
         default: 
             printf("제동장치는 %d ~ %d 범위만 선택 가능\n", BRAKE_MIN, BRAKE_MAX);
-            delay(3000); 
+
             return inputBrake();
         }
         return true;
@@ -197,7 +183,7 @@ public:
         case 2: car.steering = Steering::MOBIS; break;
         default: 
             printf("조향장치는 %d ~ %d 범위만 선택 가능\n", STEERING_MIN, STEERING_MAX);
-            delay(3000); 
+
             return inputSteering();
         }
         return true;
@@ -214,7 +200,7 @@ public:
         case 2: return n;
         default:
             printf("Run 또는 Test 중 하나를 선택 필요\n");
-            delay(3000);
+
             return selectAction();
         }
     }
